@@ -133,7 +133,11 @@ void XLCDproc::Initialize()
     // give up after 60 seconds
     if (m_initRetryInterval > INIT_RETRY_INTERVAL_MAX)
     {
-      m_used = false;
+      // Stop the program from giving up.  SHARP AQUOS specific.  m_used = false;
+    
+      // reset the retry interval after a complete cycle of failing to connect.  SHARP AQUOS specific.
+      m_initRetryInterval = INIT_RETRY_INTERVAL;
+    
       CLog::Log(LOGERROR, "XLCDproc::%s - Connect failed. Giving up.", __FUNCTION__);
     }
     else
