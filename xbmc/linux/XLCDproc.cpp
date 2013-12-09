@@ -137,8 +137,11 @@ void XLCDproc::Initialize()
     
       // reset the retry interval after a complete cycle of failing to connect.  SHARP AQUOS specific.
       m_initRetryInterval = INIT_RETRY_INTERVAL;
-    
-      CLog::Log(LOGERROR, "XLCDproc::%s - Connect failed. Giving up.", __FUNCTION__);
+      // copy the ELSE steps, that way we keep the connection alive!
+      m_initRetryInterval *= 2;
+      CLog::Log(LOGERROR, "XLCDproc::%s - Connect failed. Retry in %d seconds.MY CODE", __FUNCTION__,
+                m_initRetryInterval/1000);    
+      //CLog::Log(LOGERROR, "XLCDproc::%s - Connect failed. Giving up.", __FUNCTION__);
     }
     else
     {
