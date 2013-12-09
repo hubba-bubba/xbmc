@@ -18,14 +18,14 @@
  *  You should have received a copy of the GNU General Public License
  *  along with XBMC; see the file COPYING.  If not, see
  *  <http://www.gnu.org/licenses/>.
- *
+ *  Changed line 28 from 60000 to allow for far great number of attempts to connect with TV source
  */
 
 #include "../utils/LCD.h"
 
 #define MAX_ROWS 20
 #define INIT_RETRY_INTERVAL 2000
-#define INIT_RETRY_INTERVAL_MAX 60000
+#define INIT_RETRY_INTERVAL_MAX 600000000
 
 class XLCDproc : public ILCD
 {
