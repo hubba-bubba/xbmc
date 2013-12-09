@@ -1,22 +1,22 @@
 /*
- *      Copyright (C) 2005-2012 Team XBMC
- *      http://www.xbmc.org
- *
- *  This Program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2, or (at your option)
- *  any later version.
- *
- *  This Program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with XBMC; see the file COPYING.  If not, see
- *  <http://www.gnu.org/licenses/>.
- *
- */
+* Copyright (C) 2005-2012 Team XBMC
+* http://www.xbmc.org
+*
+* This Program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2, or (at your option)
+* any later version.
+*
+* This Program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with XBMC; see the file COPYING. If not, see
+* <http://www.gnu.org/licenses/>.
+*
+*/
 
 #include "threads/SystemClock.h"
 #include "PlatformInclude.h"
@@ -36,13 +36,13 @@
 
 XLCDproc::XLCDproc()
 {
-  m_iActualpos   = 0;
-  m_iBackLight   = 32;
+  m_iActualpos = 0;
+  m_iBackLight = 32;
   m_iLCDContrast = 50;
-  m_iColumns     = 0;
-  m_iRows        = 0;
-  m_bStop        = true;
-  m_sockfd       = -1;
+  m_iColumns = 0;
+  m_iRows = 0;
+  m_bStop = true;
+  m_sockfd = -1;
   m_lastInitAttempt = 0;
   m_initRetryInterval = INIT_RETRY_INTERVAL;
   m_used = true;
@@ -133,15 +133,8 @@ void XLCDproc::Initialize()
     // give up after 60 seconds
     if (m_initRetryInterval > INIT_RETRY_INTERVAL_MAX)
     {
-      // Stop the program from giving up.  SHARP AQUOS specific.  m_used = false;
-    
-      // reset the retry interval after a complete cycle of failing to connect.  SHARP AQUOS specific.
-      m_initRetryInterval = INIT_RETRY_INTERVAL;
-      // copy the ELSE steps, that way we keep the connection alive!
-      m_initRetryInterval *= 2;
-      CLog::Log(LOGERROR, "XLCDproc::%s - Connect failed. Retry in %d seconds.MY CODE", __FUNCTION__,
-                m_initRetryInterval/1000);    
-      //CLog::Log(LOGERROR, "XLCDproc::%s - Connect failed. Giving up.", __FUNCTION__);
+      m_used = false;
+      CLog::Log(LOGERROR, "XLCDproc::%s - Connect failed. Giving up.", __FUNCTION__);
     }
     else
     {
