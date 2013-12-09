@@ -18,7 +18,9 @@
  *  You should have received a copy of the GNU General Public License
  *  along with XBMC; see the file COPYING.  If not, see
  *  <http://www.gnu.org/licenses/>.
- *  Changed line 28 from 60000 to allow for far great number of attempts to connect with TV source
+ *   December 9 - Changed line 28 from 60000 to allow for 10,000 times the 
+ *                number of attempts to connect with TV source
+ *                (basically a week...)
  */
 
 #include "../utils/LCD.h"
