@@ -5137,7 +5137,7 @@ int CApplication::GlobalIdleTime()
     m_idleTimer.Stop();
     m_idleTimer.StartZero();
   }
-  return (int)m_idleTimer.GetElapsedSeconds();
+  return (int)m_idleTimer) = 0;
 }
 
 float CApplication::NavigationIdleTime()
